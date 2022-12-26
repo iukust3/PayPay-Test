@@ -1,6 +1,7 @@
 plugins {
     kotlin("multiplatform")
     id("com.android.library")
+    id("kotlinx-serialization")
 }
 
 kotlin {
@@ -17,14 +18,55 @@ kotlin {
     }
 
     sourceSets {
-        val commonMain by getting
+        val commonMain by getting {
+            dependencies {
+                with(Deps.Ktor) {
+                    implementation(clientCore)
+                    implementation(clientJson)
+                    implementation(clientLogging)
+                    implementation(contentNegotiation)
+                    implementation(json)
+                }
+
+                with(Deps.Kotlinx) {
+                    implementation(coroutinesCore)
+                    implementation(serializationCore)
+                }
+
+              /*  with(Deps.SqlDelight) {
+                    implementation(runtime)
+                    implementation(coroutineExtensions)
+                }*/
+
+                with(Deps.Koin) {
+                    api(core)
+                    api(test)
+                }
+
+                with(Deps.Log) {
+                    api(kermit)
+                }
+            }
+        }
         val commonTest by getting {
             dependencies {
+                implementation(Deps.Koin.test)
+                implementation(Deps.Kotlinx.coroutinesTest)
                 implementation(kotlin("test"))
             }
         }
-        val androidMain by getting
-        val androidTest by getting
+        val androidMain by getting{
+            dependencies {
+                implementation(Deps.Ktor.clientAndroid)
+             //   implementation(Deps.SqlDelight.androidDriver)
+            }
+        }
+        val androidTest by getting{
+            dependencies {
+                implementation(Deps.Ktor.clientAndroid)
+                //implementation(Deps.SqlDelight.androidDriver)
+            }
+        }
         val iosX64Main by getting
         val iosArm64Main by getting
         val iosSimulatorArm64Main by getting
@@ -33,6 +75,10 @@ kotlin {
             iosX64Main.dependsOn(this)
             iosArm64Main.dependsOn(this)
             iosSimulatorArm64Main.dependsOn(this)
+            dependencies {
+                implementation(Deps.Ktor.clientDarwin)
+                //implementation(Deps.SqlDelight.nativeDriver)
+            }
         }
         val iosX64Test by getting
         val iosArm64Test by getting
@@ -48,9 +94,12 @@ kotlin {
 
 android {
     namespace = "com.my.paypaytest.curencyconverter"
-    compileSdk = 33
+    compileSdk = Versions.targetSdk
+    sourceSets["main"].manifest.srcFile("src/androidMain/AndroidManifest.xml")
     defaultConfig {
-        minSdk = 21
-        targetSdk = 32
+        minSdk = Versions.minSdk
+        targetSdk = Versions.targetSdk
+        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
+    namespace = "com.my.paypaytest.curencyconverter.android"
 }

@@ -5,12 +5,12 @@ object Versions {
     private const val compileSdk = 33
     const val targetSdk= compileSdk
 
-    const val kotlinCoroutines = "1.7.20"
+    const val kotlinCoroutines = "1.6.4"
     const val koin = "3.3.0"
     const val ktor = "2.2.1"
 
     // Note: v1.3.2 produces iOS achiving issues
-    const val kotlinxSerialization = "1.7.20"
+    const val kotlinxSerialization = "1.4.1"
 
     const val compose = "1.3.2"
     const val composeCompiler = "1.3.2"
@@ -19,6 +19,8 @@ object Versions {
     const val androidXTestJUnit = "1.1.4"
     const val testCore = "1.5.0"
     const val exprsso = "3.5.0"
+
+    const val mockito = "4.5.1"
     const val sqlDelight = "1.5.3"
 
     const val material = "1.3.1"
@@ -68,6 +70,7 @@ object Deps {
         const val composeUiTestJUnit = "androidx.compose.ui:ui-test-junit4:${Versions.compose}"
         const val composeUiTestManifest = "androidx.compose.ui:ui-test-manifest:${Versions.compose}"
         const val exprsso = "androidx.test.espresso:espresso-core::${Versions.exprsso}"
+        const val mockito = "org.mockito:mockito-inline:${Versions.mockito}"
     }
 
     object Compose {
@@ -108,7 +111,7 @@ object Deps {
 
         const val clientAndroid = "io.ktor:ktor-client-android:$ktor"
         const val clientJava = "io.ktor:ktor-client-java:$ktor"
-        const val clientIos = "io.ktor:ktor-client-ios:$ktor"
+        const val clientDarwin = "io.ktor:ktor-client-darwin:${Versions.ktor}"
         const val clientJs = "io.ktor:ktor-client-js:$ktor"
         const val auth = "io.ktor:ktor-server-auth:$ktor"
         const val authJwt = "io.ktor:ktor-server-auth-jwt:$ktor"

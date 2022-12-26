@@ -47,4 +47,22 @@ dependencies {
         implementation(androidXTestJUnitKtx)
         implementation(exprsso)
     }
+    with(Deps.Koin) {
+        implementation(core)
+        implementation(android)
+        implementation(compose)
+        testImplementation(test)
+        testImplementation(testJUnit4)
+    }
+    with(Deps.Test) {
+        testImplementation(junit)
+        androidTestImplementation(androidXTestJUnit)
+        testImplementation(testCore)
+        testImplementation(mockito)
+
+        // Compose testing dependencies
+        androidTestImplementation(composeUiTest)
+        androidTestImplementation(composeUiTestJUnit)
+        debugImplementation(composeUiTestManifest)
+    }
    }
