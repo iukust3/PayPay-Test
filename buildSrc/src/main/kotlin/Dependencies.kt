@@ -2,7 +2,7 @@ import Versions.ktor
 
 object Versions {
     const val minSdk = 21
-    private const val compileSdk = 33
+    private const val compileSdk = 32
     const val targetSdk= compileSdk
 
     const val kotlinCoroutines = "1.6.4"
@@ -69,7 +69,7 @@ object Deps {
         const val composeUiTest = "androidx.compose.ui:ui-test:${Versions.compose}"
         const val composeUiTestJUnit = "androidx.compose.ui:ui-test-junit4:${Versions.compose}"
         const val composeUiTestManifest = "androidx.compose.ui:ui-test-manifest:${Versions.compose}"
-        const val exprsso = "androidx.test.espresso:espresso-core::${Versions.exprsso}"
+       // const val exprsso = "androidx.test.espresso:espresso-core:${Versions.exprsso}"
         const val mockito = "org.mockito:mockito-inline:${Versions.mockito}"
     }
 
@@ -80,7 +80,7 @@ object Deps {
         const val uiTooling = "androidx.compose.ui:ui-tooling:${Versions.compose}"
         const val uiToolingPreview = "androidx.compose.ui:ui-tooling-preview:${Versions.compose}"
         const val foundationLayout = "androidx.compose.foundation:foundation-layout:${Versions.compose}"
-        const val foundation= "androidx.compose.foundation:foundation:${Versions.compose}"
+      //  const val foundation= "androidx.compose.foundation:foundation:${Versions.compose}"
         const val material = "androidx.compose.material:material:${Versions.compose}"
         const val activity = "androidx.activity:activity-compose:${Versions.activityCompose}"
     }

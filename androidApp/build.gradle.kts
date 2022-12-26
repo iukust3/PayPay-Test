@@ -37,7 +37,7 @@ dependencies {
         implementation(ui)
         implementation(uiTooling)
         implementation(uiToolingPreview)
-        implementation(foundation)
+        implementation(Deps.Compose.foundationLayout)
         implementation(material)
         implementation(activity)
     }
@@ -45,7 +45,7 @@ dependencies {
         implementation(junit)
         implementation(androidXTestJUnit)
         implementation(androidXTestJUnitKtx)
-        implementation(exprsso)
+
     }
     with(Deps.Koin) {
         implementation(core)
