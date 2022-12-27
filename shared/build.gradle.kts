@@ -31,6 +31,7 @@ kotlin {
                 with(Deps.Kotlinx) {
                     implementation(coroutinesCore)
                     implementation(serializationCore)
+                    implementation(dateTime)
                 }
 
               /*  with(Deps.SqlDelight) {

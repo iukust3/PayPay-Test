@@ -9,3 +9,5 @@ interface Platform {
 expect fun getPlatform(): Platform
 
 expect  fun platformModule():Module
+
+expect class KMMContext

@@ -1,5 +1,6 @@
 package com.my.paypaytest.curencyconverter.di
 
+import com.my.paypaytest.curencyconverter.KMMContext
 import com.my.paypaytest.curencyconverter.platformModule
 import com.my.paypaytest.curencyconverter.remote.CurrencyApi
 import com.my.paypaytest.curencyconverter.repository.CurrencyRepository
@@ -14,23 +15,26 @@ import kotlinx.coroutines.SupervisorJob
 import kotlinx.serialization.json.Json
 import org.koin.core.context.startKoin
 import org.koin.dsl.KoinAppDeclaration
+import org.koin.dsl.koinApplication
 import org.koin.dsl.module
 
 fun initKoin(enableNetworkLogs: Boolean = false, appDeclaration: KoinAppDeclaration = {}) =
     startKoin {
-        appDeclaration()
+         appDeclaration()
+
         modules(commonModule(enableNetworkLogs = enableNetworkLogs), platformModule())
     }
 
 fun commonModule(enableNetworkLogs: Boolean) = module {
-    single { createJson() }
+     single { createJson() }
     single { createHttpClient(get(), get(), enableNetworkLogs = enableNetworkLogs) }
 
     single { CoroutineScope(Dispatchers.Default + SupervisorJob()) }
 
-    single { CurrencyRepository() }
-
     single { CurrencyApi(get()) }
+
+    single { CurrencyRepository(get(),get()) }
+
 }
 
 fun createJson() = Json { isLenient = true; ignoreUnknownKeys = true }

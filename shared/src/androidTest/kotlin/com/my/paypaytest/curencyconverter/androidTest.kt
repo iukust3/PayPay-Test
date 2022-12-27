@@ -1,6 +1,7 @@
 package com.my.paypaytest.curencyconverter
 
 import org.junit.Assert.assertTrue
+import org.junit.Before
 import org.junit.Test
 
 class AndroidGreetingTest {

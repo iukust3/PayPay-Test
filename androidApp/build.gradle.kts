@@ -12,6 +12,7 @@ android {
         targetSdk =Versions.targetSdk
         versionCode = 1
         versionName = "1.0"
+        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
     buildFeatures {
         compose = true
@@ -23,6 +24,9 @@ android {
         resources {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
         }
+        resources.excludes.add("META-INF/licenses/**")
+        resources.excludes.add("META-INF/AL2.0")
+        resources.excludes.add("META-INF/LGPL2.1")
     }
     buildTypes {
         getByName("release") {
@@ -33,6 +37,7 @@ android {
 
 dependencies {
     implementation(project(":shared"))
+    testImplementation("org.testng:testng:6.9.6")
     with(Deps.Compose){
         implementation(ui)
         implementation(uiTooling)
@@ -40,12 +45,6 @@ dependencies {
         implementation(Deps.Compose.foundationLayout)
         implementation(material)
         implementation(activity)
-    }
-    with(Deps.Test){
-        implementation(junit)
-        implementation(androidXTestJUnit)
-        implementation(androidXTestJUnitKtx)
-
     }
     with(Deps.Koin) {
         implementation(core)
@@ -59,10 +58,15 @@ dependencies {
         androidTestImplementation(androidXTestJUnit)
         testImplementation(testCore)
         testImplementation(mockito)
-
+        testImplementation(robolectric)
         // Compose testing dependencies
         androidTestImplementation(composeUiTest)
         androidTestImplementation(composeUiTestJUnit)
+        implementation(androidXTestJUnitKtx)
         debugImplementation(composeUiTestManifest)
+        implementation(Deps.Koin.test)
+        implementation(Deps.Kotlinx.coroutinesTest)
+        implementation(kotlin("test"))
+
     }
    }
