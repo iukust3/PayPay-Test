@@ -53,6 +53,12 @@ dependencies {
         testImplementation(test)
         testImplementation(testJUnit4)
     }
+    with(Deps.AndroidX) {
+        implementation(lifecycleRuntimeCompose)
+        implementation(lifecycleRuntimeKtx)
+        implementation(lifecycleViewmodelKtx)
+        implementation(activityCompose)
+    }
     with(Deps.Test) {
         testImplementation(junit)
         androidTestImplementation(androidXTestJUnit)
