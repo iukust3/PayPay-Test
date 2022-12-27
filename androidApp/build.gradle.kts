@@ -37,6 +37,7 @@ android {
 
 dependencies {
     implementation(project(":shared"))
+
     testImplementation("org.testng:testng:6.9.6")
     with(Deps.Compose){
         implementation(ui)

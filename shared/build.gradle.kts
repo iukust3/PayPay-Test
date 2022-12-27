@@ -32,6 +32,7 @@ kotlin {
                     implementation(coroutinesCore)
                     implementation(serializationCore)
                     implementation(dateTime)
+                    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.4.1")
                 }
 
               /*  with(Deps.SqlDelight) {
